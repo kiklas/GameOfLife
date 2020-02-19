@@ -18,15 +18,14 @@ private:
 public:
 
     Cell();
-    Cell(bool s, int c, int r);
-    void setState(bool s);
+    Cell(int c, int r);
     void applyRules();
     int getColumn();
     int getRow();
     operator bool() const;
     void operator=( bool b);
     void setNeighbourAmount(int n);
-    int getNeighbourAmount();
+    bool getState();
 };
 
 

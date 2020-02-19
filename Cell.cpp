@@ -9,18 +9,14 @@ Cell::Cell(){
     this->state = 0;
     this->column = 0;
     this->row = 0;
+    this->neighbourAmount = 0;
 }
 
-Cell::Cell(bool state, int column, int row){
-
-    this->state = state;
+Cell::Cell(int column, int row){
+    this->state = false;
     this->column = column;
     this->row = row;
-}
-
-void Cell::setState(bool s) {
-
-    state = s;
+    this->neighbourAmount = 0;
 }
 
 void Cell::applyRules(){
@@ -57,7 +53,6 @@ void Cell::setNeighbourAmount(int n) {
     neighbourAmount = n;
 }
 
-int Cell::getNeighbourAmount() {
-    return neighbourAmount;
+bool Cell::getState(){
+    return state;
 }
-

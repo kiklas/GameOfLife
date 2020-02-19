@@ -5,9 +5,7 @@
 #include "Board.h"
 #include "stdexcept"
 
-Board::Board() {
-
-}
+Board::Board() = default;
 
 Board::Board(int size) {
 
@@ -15,7 +13,7 @@ Board::Board(int size) {
     for (int i = 0; i < size; i++){
         cells.push_back(cellRow);
         for (int j = 0; j < size; j++){
-            cells[i].push_back(Cell());
+            cells[i].push_back(Cell(i, j));
         }
     }
 }
@@ -28,43 +26,32 @@ int Board::checkNeighbours(Cell c) {
 
     for(i; i <= c.getColumn() + 1; i++)  {
 
-        try{
-            if(cells.at(i).at(j)){
+        if(i < 0 || i > cells.size()) continue;
+
+        for (j; j <= c.getRow() + 1; j++) {
+
+            if(j < 0 || j > cells.size()) continue;
+
+            if(i == c.getColumn() && j == c.getRow()) continue;
+
+            if(cells.at(i).at(j).getState()){
                 neighbours++;
-            }
-        } catch(std::out_of_range){
-
-        }
-        for (j; j <= c.getRow() + 1; ++j) {
-
-            try {
-
-                if(cells.at(i).at(j)){
-                    neighbours++;
-                }
-            } catch (std::out_of_range) {
-
             }
         }
         j = c.getRow() - 1;
     }
-
     return neighbours;
-
 }
 
 void Board::nextState() {
 
-    int j;
     for (int i = 0; i < cells.size(); i++) {
-        j = 0;
-        for (auto it = cells[i].begin(); it != cells[i].end(); it++, j++) {
+        for (auto it = cells[i].begin(); it != cells[i].end(); it++) {
             it->setNeighbourAmount(checkNeighbours(*it));
         }
     }
    for (int i = 0; i < cells.size(); i++) {
-        j = 0;
-        for (auto it = cells[i].begin(); it != cells[i].end(); it++, j++) {
+        for (auto it = cells[i].begin(); it != cells[i].end(); it++) {
             it->applyRules();
         }
     }
@@ -89,7 +76,9 @@ void Board::printBoard() {
      {
         for (int j = 0; j < cells.size(); j++) {
             text += "[";
-            text += std::to_string(cells.at(i).at(j));
+            if(cells.at(i).at(j) < 1) text += "0";
+            else text += "1";
+            //text += std::to_string(cells.at(i).at(j));
             text += "] ";
         }
         std::cout << text << std::endl;
@@ -102,10 +91,7 @@ void Board::setAlive(int column, int row) {
 
     try {
         cells.at(column).at(row) = true;
-    } catch(std::out_of_range){
+    } catch(const std::out_of_range &e){
         std::cout << "Index out of range" << std::endl;
     }
 }
-
-
-

@@ -50,6 +50,7 @@ int main() {
         if (ss.fail()) {
             std::cout << "Input an integer" << std::endl;
             ss.str("");
+            continue;
         }
         else{
             isValid = true;

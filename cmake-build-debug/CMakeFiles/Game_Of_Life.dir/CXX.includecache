@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Board.cpp
+iostream
+-
+Board.h
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Board.h
+stdexcept
+C:/Users/Niklas/CLionProjects/Game_Of_Life/stdexcept
+
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Board.h
+vector
+-
+Cell.h
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Cell.h
+
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Cell.cpp
+Cell.h
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Cell.h
+
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Cell.h
+
+C:/Users/Niklas/CLionProjects/Game_Of_Life/main.cpp
+iostream
+-
+sstream
+-
+Board.h
+C:/Users/Niklas/CLionProjects/Game_Of_Life/Board.h
+
