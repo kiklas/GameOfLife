@@ -74,8 +74,9 @@ int main() {
         std::string inputString = "";
 
         std::cout << "Choose an action" << std::endl;
-        std::cout << "1: Start automatic game" << std::endl;
+        std::cout << "1: Start automatic game (11 turns) " << std::endl;
         std::cout << "2: Next state" << std::endl;
+        std::cout << "0 End Game" << std::endl;
 
         std::cin >> inputString;
 
@@ -85,6 +86,8 @@ int main() {
         else if (inputString == "2"){
             gameBoard.nextState();
         }
+        else if(inputString == "0")break;
+
         else{
             std::cout << "Input either 1 or 2" << std::endl;
         }

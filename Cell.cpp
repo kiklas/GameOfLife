@@ -1,7 +1,3 @@
-//
-// Created by Niklas on 07/02/2020.
-//
-
 #include "Cell.h"
 
 Cell::Cell(){
@@ -39,20 +35,19 @@ int Cell::getRow() {
     return this->row;
 }
 
+bool Cell::getState(){
+    return state;
+}
+
 Cell::operator bool() const {
     return state;
 }
 
 void Cell::operator=(bool b) {
-
     state = b;
 }
 
 void Cell::setNeighbourAmount(int n) {
 
     neighbourAmount = n;
-}
-
-bool Cell::getState(){
-    return state;
 }
